@@ -30,4 +30,14 @@ public class UserTest {
 
         assertEquals(5, user.getReputation());
     }
+
+    @Test
+    public void afterAnswerUpvotedReputationOfAnswererUpBy10() throws Exception {
+        Question question = user.askQuestion("Question");
+        Answer answer = user2.answerQuestion(question, "Answer");
+
+        user.upVote(answer);
+
+        assertEquals(10, user2.getReputation());
+    }
 }
