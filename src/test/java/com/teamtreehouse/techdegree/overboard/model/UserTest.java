@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  */
 public class UserTest {
 
-    private Board board;
+    private static Board board;
     private User user;
     private User user2;
 
@@ -23,7 +23,7 @@ public class UserTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @BeforeClass
-    public void initialize(){
+    public static void initialize(){
         board = new Board("Java");
     }
 
