@@ -38,6 +38,15 @@ public class UserTest {
     }
 
     @Test
+    public void afterQuestionDownvotedReputationOfQuestioneerWithoutChange() throws Exception {
+        Question question = user.askQuestion("Question");
+
+        user2.downVote(question);
+
+        assertEquals(0, user.getReputation());
+    }
+
+    @Test
     public void afterAnswerUpvotedReputationOfAnswererUpBy10() throws Exception {
         Question question = user.askQuestion("Question");
         Answer answer = user2.answerQuestion(question, "Answer");
@@ -45,6 +54,16 @@ public class UserTest {
         user.upVote(answer);
 
         assertEquals(10, user2.getReputation());
+    }
+
+    @Test
+    public void afterAnswerDownvotedReputationOfAnswererDownBy1() throws Exception {
+        Question question = user.askQuestion("Question");
+        Answer answer = user2.answerQuestion(question, "Answer");
+
+        user.downVote(answer);
+
+        assertEquals(-1, user2.getReputation());
     }
 
     @Test
