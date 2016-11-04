@@ -1,9 +1,11 @@
 package com.teamtreehouse.techdegree.overboard.model;
 
+import com.teamtreehouse.techdegree.overboard.exc.AnswerAcceptanceException;
 import com.teamtreehouse.techdegree.overboard.exc.VotingException;
 import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 
@@ -15,6 +17,9 @@ public class UserTest {
     private Board board;
     private User user;
     private User user2;
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Before
     public void setUp() throws Exception {
@@ -80,5 +85,15 @@ public class UserTest {
         Answer answer = user.answerQuestion(question, "Answer");
 
         user.downVote(answer);
+    }
+
+    @Test
+    public void acceptingAnswerNotByOriginalAuthorNotAllowed() throws Exception {
+        thrown.expect(AnswerAcceptanceException.class);
+        thrown.expectMessage("Only testUser can accept this answer as it is their question");
+        Question question = user.askQuestion("Question");
+        Answer answer = user2.answerQuestion(question, "Answer");
+
+        user2.acceptAnswer(answer);
     }
 }
