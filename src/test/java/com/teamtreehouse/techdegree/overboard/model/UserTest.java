@@ -3,6 +3,7 @@ package com.teamtreehouse.techdegree.overboard.model;
 import com.teamtreehouse.techdegree.overboard.exc.AnswerAcceptanceException;
 import com.teamtreehouse.techdegree.overboard.exc.VotingException;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -21,9 +22,13 @@ public class UserTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
+    @BeforeClass
+    public void initialize(){
+        board = new Board("Java");
+    }
+
     @Before
     public void setUp() throws Exception {
-        board = new Board("Java");
         user = new User(board, "testUser");
         user2 = new User(board, "testUser2");
     }
