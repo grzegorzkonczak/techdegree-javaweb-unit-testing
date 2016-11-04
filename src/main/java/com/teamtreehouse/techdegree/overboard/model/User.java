@@ -51,7 +51,11 @@ public class User {
     }
 
     public boolean downVote(Post post) {
+        if (post.getAuthor().equals(this)) {
+            throw new VotingException("You cannot vote for yourself!");
+        }
         return post.addDownVoter(this);
+
     }
 
     public int getReputation() {

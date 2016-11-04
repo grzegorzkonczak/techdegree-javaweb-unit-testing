@@ -1,5 +1,6 @@
 package com.teamtreehouse.techdegree.overboard.model;
 
+import com.teamtreehouse.techdegree.overboard.exc.VotingException;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -49,5 +50,35 @@ public class UserTest {
         user.acceptAnswer(answer);
 
         assertEquals(15, user2.getReputation());
+    }
+
+    @Test(expected = VotingException.class)
+    public void upvotingAnswerByOriginalAuthorNotAllowed() throws Exception {
+        Question question = user.askQuestion("Question");
+        Answer answer = user.answerQuestion(question, "Answer");
+        
+        user.upVote(answer);
+    }
+
+    @Test(expected = VotingException.class)
+    public void upvotingQuestionByOriginalAuthorNotAllowed() throws Exception {
+        Question question = user.askQuestion("Question");
+        
+        user.upVote(question);
+    }
+
+    @Test(expected = VotingException.class)
+    public void downvotingQuestionByOriginalAuthorNotAllowed() throws Exception {
+        Question question = user.askQuestion("Question");
+
+        user.downVote(question);
+    }
+
+    @Test(expected = VotingException.class)
+    public void downvotingAnswerByOriginalAuthorNotAllowed() throws Exception {
+        Question question = user.askQuestion("Question");
+        Answer answer = user.answerQuestion(question, "Answer");
+
+        user.downVote(answer);
     }
 }
