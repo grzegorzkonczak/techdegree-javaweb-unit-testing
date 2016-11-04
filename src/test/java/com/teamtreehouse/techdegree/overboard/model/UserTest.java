@@ -1,5 +1,9 @@
 package com.teamtreehouse.techdegree.overboard.model;
 
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 /**
@@ -7,4 +11,23 @@ import static org.junit.Assert.*;
  */
 public class UserTest {
 
+    private Board board;
+    private User user;
+    private User user2;
+
+    @Before
+    public void setUp() throws Exception {
+        board = new Board("Java");
+        user = new User(board, "testUser");
+        user2 = new User(board, "testUser2");
+    }
+
+    @Test
+    public void afterQuestionUpvotedReputationOfQuestioneerUpBy5() throws Exception {
+        Question question = user.askQuestion("Question");
+
+        user2.upVote(question);
+
+        assertEquals(5, user.getReputation());
+    }
 }
