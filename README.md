@@ -1,3 +1,23 @@
+## Java unit testing
+This project was aimed at practicing unit testing for WIP (work in progress) application.
+Application was meant to mimic Stack Overflow in functionality, project initial files where provided with skeleton of application and set of requirements for test.
+The requirements where:
+
+1. Test to ensure that questioner's reputation goes up by 5 points if their question is upvoted.
+
+2. Test to ensure that answerer's reputation goes up by 10 points if their answer is upvoted.
+
+3. Test to ensure that answerer's reputation goes up by 15 points if their answer is accepted.
+
+4. Tests to ensure that original author of question or answer can't upvote or downvote his question/answer.
+
+5. Tests to ensure that only original author of question can accept answer for it.
+
+6. Tests to ensure that down voting question does not change reputation of questioneer
+ and down voting answer reduces reputation of answer author by 1.
+ 
+Below is code snippet from application that was tested.
+
 ## Welcome to Stack Overboard
 
 This is a WIP (Work In Progress) but the basic idea is this:
@@ -34,7 +54,9 @@ System.out.println("Bob: " + bob.getReputation()); // Bob's answer got upvoted (
                                                    // so this prints Bob: 25
 ```
 
-## TODO
-[ ] TESTS!
-[ ] Use a data store!
-[ ] Build the website surrounding this awesome model
+To check my other work please go to:
+
+- https://github.com/grzegorzkonczak/instateam-with-spring-and-hibernate - Project team management web application using Spring with Hibernate.
+- https://github.com/grzegorzkonczak/analyze-public-data-with-hibernate - Console application for managing Countries data using Hibernate and H2 file database. Edit
+- https://github.com/grzegorzkonczak/personal-blog - Simple web blog application built using Spark Framework
+- https://github.com/grzegorzkonczak/todo-api-with-spark - REST API for "TODO" application using Spark framework
